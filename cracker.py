@@ -5,10 +5,10 @@ def crack_hash(target_hash, hash_file="hashes.txt"):
             for line in f:
                 line = line.strip()
                 if ":" in line:
-                    h, word = line.split(":", 1)
+                    word, h = line.split(":", 1)
                     if h.strip().lower() == target_hash:
                         return f"[+] Match found! Plaintext: {word.strip()}"
-        return "[-] No matching hash found in hash list."
+        return "[-] No matching MD5 hash found in hashes.txt."
     except FileNotFoundError:
         return f"[-] Error: '{hash_file}' not found. Run generate_hashes.py first."
 
